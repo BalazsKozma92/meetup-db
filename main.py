@@ -4,8 +4,8 @@ import mysql.connector as sql
 db = sql.connect(host="localhost",user="root",password="",charset='utf8',use_unicode=True, autocommit=True)
 cursor = db.cursor()
 
-sql_create = ("Users\Kozma Balazs\PycharmProjects\sql\create.sql")
-sql_insert = ("Users\Kozma Balazs\PycharmProjects\sql\insert.sql")
+sql_create = ("create.sql")
+sql_insert = ("insert.sql")
 
 print("Welcome the simple meetup SQL system!\n","*"*37,"\n", \
       "1 # Create the database\n" \
