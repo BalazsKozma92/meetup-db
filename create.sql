@@ -1,0 +1,44 @@
+﻿
+CREATE DATABASE meetups_db
+  DEFAULT CHARACTER SET utf8
+  DEFAULT COLLATE utf8_hungarian_ci;
+
+
+CREATE TABLE IF NOT EXISTS meetups_db.Meetups (
+	Id INTEGER NOT NULL AUTO_INCREMENT,
+	Start DATETIME NOT NULL,
+	Location VARCHAR(150) CHARACTER SET utf8 COLLATE utf8_hungarian_ci NOT NULL,
+	Topic VARCHAR(150) CHARACTER SET utf8 COLLATE utf8_hungarian_ci NOT NULL,
+	Description varchar(1000) CHARACTER SET utf8 COLLATE utf8_hungarian_ci NOT NULL,
+	PRIMARY KEY(Id)
+	)AUTO_INCREMENT=1;
+	
+CREATE TABLE IF NOT EXISTS meetups_db.Users (
+	Id INTEGER NOT NULL AUTO_INCREMENT,
+	Name VARCHAR(100) NOT NULL,
+	Birthdate DATETIME NOT NULL,
+	Introduction VARCHAR(500) CHARACTER SET utf8 COLLATE utf8_hungarian_ci,
+	Avatar varchar(1000) CHARACTER SET utf8 COLLATE utf8_hungarian_ci,
+	Email VARCHAR(150) CHARACTER SET utf8 COLLATE utf8_hungarian_ci,
+	PRIMARY KEY(Id)
+	)AUTO_INCREMENT=1;
+	
+
+CREATE TABLE IF NOT EXISTS meetups_db.Statuses (
+	Id INTEGER NOT NULL,
+	Value VARCHAR(50),
+	PRIMARY KEY(Id)
+	);
+
+
+CREATE TABLE IF NOT EXISTS meetups_db.MeetupRegistrations (
+	Id INTEGER NOT NULL AUTO_INCREMENT,
+	StatusdId INTEGER NOT NULL,
+	MeetupId INTEGER NOT NULL,
+	UserId INTEGER NOT NULL,
+	PRIMARY KEY(Id),
+	FOREIGN KEY (StatusdId) REFERENCES meetups_db.Statuses(Id),
+	FOREIGN KEY (MeetupId) REFERENCES meetups_db.Meetups(Id),
+	FOREIGN KEY (UserId) REFERENCES meetups_db.Users(Id)
+	)AUTO_INCREMENT=1;
+	
